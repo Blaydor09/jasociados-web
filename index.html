@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JOELMA & ASOCIADOS</title>
+  <meta name="description" content="Asesoría legal rápida, eficiente y cercana en Bolivia. Especialistas en inscripción de derechos reales, compraventa y regularización.">
+  <link rel="icon" href="static/img/favicon.ico">
+
+  <!-- 1. Cargar JavaScript antes de CSS -->
+  <script src="script.js" defer></script>
+
+  <!-- 2. Cargar estilos CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#home" class="header__logo">JOELMA & ASOCIADOS</a>
+      <button class="header__menu-toggle" aria-label="Abrir menú">☰</button>
+      <nav class="header__nav">
+        <ul class="nav__list">
+          <li><a href="#home" class="nav__link">Inicio</a></li>
+          <li><a href="#servicios" class="nav__link">Servicios</a></li>
+          <li><a href="#nosotros" class="nav__link">Nosotros</a></li>
+          <li><a href="#contacto" class="nav__link">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="container hero__inner">
+      <h1 class="hero__title">Legalidad con rapidez, eficiencia y cercanía</h1>
+      <p class="hero__subtitle">Asesoría integral en inscripciones, compraventa y regularización.</p>
+      <a href="#contacto" class="btn btn--primary">Agendar consulta</a>
+    </div>
+  </section>
+
+  <section id="servicios" class="section">
+    <div class="container">
+      <h2 class="section__title">Nuestros Servicios</h2>
+      <div class="cards">
+        <article class="card">
+          <h3 class="card__title">Inscripción de Derechos Reales</h3>
+          <p class="card__text">Registro de hipotecas, usufructos y servidumbres.</p>
+        </article>
+        <!-- Más tarjetas según servicios -->
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros" class="section section--alt">
+    <div class="container">
+      <h2 class="section__title">Sobre Nosotros</h2>
+      <p class="section__text">Somos un equipo de profesionales con más de 10 años de experiencia, comprometidos con ofrecer soluciones legales eficientes y cercanas.</p>
+    </div>
+  </section>
+
+  <section id="contacto" class="section">
+    <div class="container">
+      <h2 class="section__title">Contacto</h2>
+      <form id="contact-form" class="form" action="https://formspree.io/f/your-form-id" method="POST">
+        <div class="form__group">
+          <label for="nombre" class="form__label">Nombre</label>
+          <input id="nombre" name="nombre" type="text" class="form__input" placeholder="Tu nombre" required>
+        </div>
+        <div class="form__group">
+          <label for="email" class="form__label">Email</label>
+          <input id="email" name="email" type="email" class="form__input" placeholder="Tu correo" required>
+        </div>
+        <div class="form__group">
+          <label for="mensaje" class="form__label">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" class="form__textarea" placeholder="¿Cómo podemos ayudarte?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--secondary">Enviar mensaje</button>
+        <div id="form-status" class="form__status"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>&copy; 2025 JOELMA & ASOCIADOS. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
