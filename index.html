@@ -3,86 +3,201 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JOELMA & ASOCIADOS</title>
-  <meta name="description" content="Asesoría legal rápida, eficiente y cercana en Bolivia. Especialistas en inscripción de derechos reales, compraventa y regularización.">
-  <link rel="icon" href="static/img/favicon.ico">
-
-  <!-- 1. Cargar JavaScript antes de CSS -->
-  <script src="script.js" defer></script>
-
-  <!-- 2. Cargar estilos CSS -->
-  <link rel="stylesheet" href="style.css">
+  <title>LO CONCILIUM - Tu Derecho a Resolver Sin Litigar</title>
+  <meta name="description" content="LO CONCILIUM: Especialistas en procesos de conciliación civil, penal, familiar, laboral y comercial. Santa Cruz de la Sierra.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    :root {
+      --color-primary: #2B2D42;
+      --color-secondary: #8D99AE;
+      --color-accent: #EF233C;
+      --color-bg: #F8F9FA;
+      --color-white: #FFFFFF;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Open Sans', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-primary); line-height: 1.6; }
+    header { background: var(--color-primary); color: var(--color-white); position: sticky; top: 0; z-index: 1000; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+    .logo { font-family: var(--font-heading); font-size: 1.5rem; }
+    .nav-links { display: none; list-style: none; }
+    .nav-links li { margin-left: 1.5rem; }
+    .nav-links a { color: var(--color-white); text-decoration: none; font-weight: 600; }
+    .hamburger { display: block; cursor: pointer; width: 24px; height: 18px; position: relative; }
+    .hamburger span { position: absolute; height: 3px; width: 100%; background: var(--color-white); border-radius: 2px; transition: all 0.3s; }
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+    .hamburger span:nth-child(3) { bottom: 0; }
+    /* Hero */
+    #home { display: flex; align-items: center; justify-content: center; text-align: center; flex-direction: column; height: 80vh; background: url('banner.jpg') center/cover no-repeat; color: var(--color-white); }
+    #home h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; }
+    #home p { font-size: 1.25rem; margin-bottom: 2rem; }
+    .btn { background: var(--color-accent); color: var(--color-white); padding: 0.75rem 1.5rem; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s; }
+    .btn:hover { background: #d12234; }
+    section { padding: 4rem 0; }
+    section h2 { font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem; color: var(--color-primary); text-align: center; }
+    section p { max-width: 800px; margin: 0.5rem auto 2rem; text-align: center; }
+    /* About */
+    #sobre .content { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    #sobre .info { text-align: left; }
+    /* Services & Values */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--color-white); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    .card:hover { transform: translateY(-5px); }
+    .card h3 { font-family: var(--font-heading); margin-bottom: 0.75rem; }
+    /* Contact */
+    #contacto form { max-width: 600px; margin: 0 auto; display: grid; gap: 1rem; }
+    #contacto label { display: block; font-weight: 600; }
+    #contacto input, #contacto textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--color-secondary); border-radius: 4px; font-family: var(--font-body); }
+    #contacto .status { text-align: center; margin-top: 1rem; }
+    /* Footer */
+    footer { background: var(--color-primary); color: var(--color-white); padding: 2rem 0; text-align: center; }
+    footer a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
+    /* Responsive */
+    @media (min-width: 768px) {
+      .hamburger { display: none; }
+      .nav-links { display: flex; }
+    }
+    @media (max-width: 767px) {
+      .nav-active { display: block; position: absolute; top: 60px; left: 0; width: 100%; background: var(--color-primary); padding: 1rem 0; }
+      .nav-active li { margin: 1rem 0; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container header__inner">
-      <a href="#home" class="header__logo">JOELMA & ASOCIADOS</a>
-      <button class="header__menu-toggle" aria-label="Abrir menú">☰</button>
-      <nav class="header__nav">
-        <ul class="nav__list">
-          <li><a href="#home" class="nav__link">Inicio</a></li>
-          <li><a href="#servicios" class="nav__link">Servicios</a></li>
-          <li><a href="#nosotros" class="nav__link">Nosotros</a></li>
-          <li><a href="#contacto" class="nav__link">Contacto</a></li>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">LO CONCILIUM</div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Inicio</a></li>
+          <li><a href="#sobre">Sobre Nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#valores">Valores</a></li>
+          <li><a href="#digital">Estrategia Digital</a></li>
+          <li><a href="#contacto">Contacto</a></li>
         </ul>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
       </nav>
     </div>
   </header>
 
-  <section id="home" class="hero">
-    <div class="container hero__inner">
-      <h1 class="hero__title">Legalidad con rapidez, eficiencia y cercanía</h1>
-      <p class="hero__subtitle">Asesoría integral en inscripciones, compraventa y regularización.</p>
-      <a href="#contacto" class="btn btn--primary">Agendar consulta</a>
-    </div>
-  </section>
+  <main>
+    <section id="home">
+      <h1>TU DERECHO A RESOLVER SIN LITIGAR</h1>
+      <p>Especialistas en conciliación civil, penal, familiar, laboral y comercial.</p>
+      <a href="#contacto" class="btn">Agendar Consulta</a>
+    </section>
 
-  <section id="servicios" class="section">
-    <div class="container">
-      <h2 class="section__title">Nuestros Servicios</h2>
-      <div class="cards">
-        <article class="card">
-          <h3 class="card__title">Inscripción de Derechos Reales</h3>
-          <p class="card__text">Registro de hipotecas, usufructos y servidumbres.</p>
-        </article>
-        <!-- Más tarjetas según servicios -->
+    <section id="sobre">
+      <div class="container content">
+        <h2>Sobre Nosotros</h2>
+        <div class="info">
+          <p>Fundada por los abogados <strong>Joelma Lima</strong> y <strong>Joaquín Osorio</strong>, LO CONCILIUM nace con la misión de transformar la forma de resolver conflictos legales, promoviendo la conciliación como primera vía de acceso a la justicia.</p>
+          <p><strong>Ubicación:</strong> 4.º anillo, Torres DUO, Piso 14 – Oficina 4C, Santa Cruz de la Sierra.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="nosotros" class="section section--alt">
+    <section id="servicios">
+      <div class="container">
+        <h2>Áreas de Práctica</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Conciliación Civil</h3>
+            <p>Resolución de disputas contractuales, arrendamientos, daños y perjuicios.</p>
+          </div>
+          <div class="card">
+            <h3>Conciliación Penal</h3>
+            <p>Procesos alternativos para delitos de menor cuantía.</p>
+          </div>
+          <div class="card">
+            <h3>Conciliación Familiar</h3>
+            <p>Divorcios, pensiones alimenticias y regímenes de visita.</p>
+          </div>
+          <div class="card">
+            <h3>Conciliación Laboral</h3>
+            <p>Conflictos entre empleados y empleadores, indemnizaciones.</p>
+          </div>
+          <div class="card">
+            <h3>Conciliación Comercial</h3>
+            <p>Disputas entre empresas, socios y proveedores.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="valores">
+      <div class="container">
+        <h2>Valores</h2>
+        <div class="grid">
+          <div class="card"><h3>Profesionalismo</h3><p>Compromiso y ética en cada proceso.</p></div>
+          <div class="card"><h3>Imparcialidad</h3><p>Objetividad y transparencia.</p></div>
+          <div class="card"><h3>Diálogo Constructivo</h3><p>Fomentamos el entendimiento mutuo.</p></div>
+          <div class="card"><h3>Soluciones Humanas</h3><p>Enfoque cercano y respetuoso.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="digital">
+      <div class="container">
+        <h2>Estrategia Digital</h2>
+        <p>Posicionamos la conciliación como primera opción mediante campañas en <strong>Facebook Ads</strong> y presencia profesional en <strong>LinkedIn</strong>, dirigiendo tráfico a este sitio como centro de contacto.</p>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <h2>Contacto</h2>
+        <form action="https://formspree.io/f/yourFormID" method="POST" id="contactForm">
+          <label for="name">Nombre Completo</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Correo Electrónico</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <button type="submit" class="btn">Enviar Mensaje</button>
+          <p class="status" id="formStatus"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
     <div class="container">
-      <h2 class="section__title">Sobre Nosotros</h2>
-      <p class="section__text">Nuestro enfoque se basa en la cercanía y la transparencia: combinamos un profundo conocimiento jurídico con una atención personalizada, adaptando cada estrategia a las necesidades únicas de nuestros clientes para lograr resultados claros y confiables.</p>
-    </div>
-  </section>
-
-  <section id="contacto" class="section">
-    <div class="container">
-      <h2 class="section__title">Contacto</h2>
-      <form id="contact-form" class="form" action="https://formspree.io/f/your-form-id" method="POST">
-        <div class="form__group">
-          <label for="nombre" class="form__label">Nombre</label>
-          <input id="nombre" name="nombre" type="text" class="form__input" placeholder="Tu nombre" required>
-        </div>
-        <div class="form__group">
-          <label for="email" class="form__label">Email</label>
-          <input id="email" name="email" type="email" class="form__input" placeholder="Tu correo" required>
-        </div>
-        <div class="form__group">
-          <label for="mensaje" class="form__label">Mensaje</label>
-          <textarea id="mensaje" name="mensaje" class="form__textarea" placeholder="¿Cómo podemos ayudarte?" required></textarea>
-        </div>
-        <button type="submit" class="btn btn--secondary">Enviar mensaje</button>
-        <div id="form-status" class="form__status"></div>
-      </form>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p>&copy; 2025 JOELMA & ASOCIADOS. Todos los derechos reservados.</p>
+      <p>&copy; 2025 LO CONCILIUM. Todos los derechos reservados.</p>
+      <p>Síguenos en <a href="#" target="_blank" rel="noopener">Facebook</a> | <a href="#" target="_blank" rel="noopener">LinkedIn</a></p>
     </div>
   </footer>
+
+  <script defer>
+    // Navegación móvil
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('nav-active'));
+
+    // Feedback de formulario
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      status.textContent = 'Enviando mensaje...';
+      fetch(form.action, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          if (response.ok) {
+            status.textContent = 'Mensaje enviado correctamente.';
+            form.reset();
+          } else throw new Error('Error de envío');
+        })
+        .catch(() => status.textContent = 'Hubo un problema, inténtalo más tarde.');
+    });
+  </script>
 </body>
 </html>
