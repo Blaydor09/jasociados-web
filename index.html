@@ -16,13 +16,15 @@
       --font-heading: 'Montserrat', sans-serif;
       --font-body: 'Open Sans', sans-serif;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-primary); line-height: 1.6; }
+
+    /* Header & Navigation */
     header { background: var(--color-primary); color: var(--color-white); position: sticky; top: 0; z-index: 1000; }
     .container { width: 90%; max-width: 1200px; margin: 0 auto; }
     nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
     .logo { font-family: var(--font-heading); font-size: 1.5rem; }
-    .nav-links { display: none; list-style: none; }
+    .nav-links { list-style: none; display: none; }
     .nav-links li { margin-left: 1.5rem; }
     .nav-links a { color: var(--color-white); text-decoration: none; font-weight: 600; }
     .hamburger { display: block; cursor: pointer; width: 24px; height: 18px; position: relative; }
@@ -30,31 +32,51 @@
     .hamburger span:nth-child(1) { top: 0; }
     .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
     .hamburger span:nth-child(3) { bottom: 0; }
-    /* Hero */
-    #home { display: flex; align-items: center; justify-content: center; text-align: center; flex-direction: column; height: 80vh; background: url('banner.jpg') center/cover no-repeat; color: var(--color-white); }
+
+    /* Hero Section */
+    #home {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      height: 80vh;
+      background: linear-gradient(rgba(43,45,66,0.6), rgba(43,45,66,0.6)), url('banner.jpg') center/cover no-repeat;
+      background-color: var(--color-secondary);
+      color: var(--color-white);
+    }
+    #home h1, #home p { text-shadow: 0 2px 8px rgba(0,0,0,0.7); }
     #home h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; }
     #home p { font-size: 1.25rem; margin-bottom: 2rem; }
     .btn { background: var(--color-accent); color: var(--color-white); padding: 0.75rem 1.5rem; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s; }
     .btn:hover { background: #d12234; }
+
+    /* Sections */
     section { padding: 4rem 0; }
     section h2 { font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem; color: var(--color-primary); text-align: center; }
     section p { max-width: 800px; margin: 0.5rem auto 2rem; text-align: center; }
+
     /* About */
     #sobre .content { display: grid; grid-template-columns: 1fr; gap: 2rem; }
     #sobre .info { text-align: left; }
-    /* Services & Values */
+
+    /* Grid Cards */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
     .card { background: var(--color-white); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
     .card:hover { transform: translateY(-5px); }
     .card h3 { font-family: var(--font-heading); margin-bottom: 0.75rem; }
-    /* Contact */
+
+    /* Contact Form */
     #contacto form { max-width: 600px; margin: 0 auto; display: grid; gap: 1rem; }
     #contacto label { display: block; font-weight: 600; }
     #contacto input, #contacto textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--color-secondary); border-radius: 4px; font-family: var(--font-body); }
     #contacto .status { text-align: center; margin-top: 1rem; }
+
     /* Footer */
     footer { background: var(--color-primary); color: var(--color-white); padding: 2rem 0; text-align: center; }
     footer a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
+
     /* Responsive */
     @media (min-width: 768px) {
       .hamburger { display: none; }
@@ -121,7 +143,7 @@
           </div>
           <div class="card">
             <h3>Conciliación Laboral</h3>
-            <p>Conflictos entre empleados y empleadores, indemnizaciones.</p>
+            <p>Conflicos entre empleados y empleadores, indemnizaciones.</p>
           </div>
           <div class="card">
             <h3>Conciliación Comercial</h3>
