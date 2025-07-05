@@ -2,7 +2,7 @@
 const OPENAI_API_KEY = "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";
 
 
-const MODEL          = "gpt-4.1-nano";
+const MODEL          = "gpt-4o-mini";
 const systemPrompt   = `
 Eres el asistente virtual oficial de LO CONCILIUM, un consorcio jurídico boliviano que solo brinda servicios de conciliación.
 
