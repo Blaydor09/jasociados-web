@@ -1,225 +1,611 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LO CONCILIUM - Tu Derecho a Resolver Sin Litigar</title>
-  <meta name="description" content="LO CONCILIUM: Especialistas en procesos de conciliación civil, penal, familiar, laboral y comercial. Santa Cruz de la Sierra.">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LO CONCILIUM – Resuelve tu conflicto sin litigar</title>
+
+  <!-- Bootstrap 5 CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Opcional: Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+  />
+
   <style>
-    :root {
-      --color-primary: #2B2D42;
-      --color-secondary: #8D99AE;
-      --color-accent: #EF233C;
-      --color-bg: #F8F9FA;
-      --color-white: #FFFFFF;
-      --font-heading: 'Montserrat', sans-serif;
-      --font-body: 'Open Sans', sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-primary); line-height: 1.6; }
-
-    /* Header & Navigation */
-    header { background: var(--color-primary); color: var(--color-white); position: sticky; top: 0; z-index: 1000; }
-    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
-    .logo { font-family: var(--font-heading); font-size: 1.5rem; }
-    .nav-links { list-style: none; display: none; }
-    .nav-links li { margin-left: 1.5rem; }
-    .nav-links a { color: var(--color-white); text-decoration: none; font-weight: 600; }
-    .hamburger { display: block; cursor: pointer; width: 24px; height: 18px; position: relative; }
-    .hamburger span { position: absolute; height: 3px; width: 100%; background: var(--color-white); border-radius: 2px; transition: all 0.3s; }
-    .hamburger span:nth-child(1) { top: 0; }
-    .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
-    .hamburger span:nth-child(3) { bottom: 0; }
-
-    /* Hero Section */
-    #home {
+    /* Hero background */
+    #hero {
+      background: url("https://via.placeholder.com/1920x900?text=Conciliacion")
+        center/cover no-repeat;
+      min-height: 85vh;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      flex-direction: column;
-      height: 80vh;
-      background: linear-gradient(rgba(43,45,66,0.6), rgba(43,45,66,0.6)), url('banner.jpg') center/cover no-repeat;
-      background-color: var(--color-secondary);
-      color: var(--color-white);
+      color: #fff;
     }
-    #home h1, #home p { text-shadow: 0 2px 8px rgba(0,0,0,0.7); }
-    #home h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; }
-    #home p { font-size: 1.25rem; margin-bottom: 2rem; }
-    .btn { background: var(--color-accent); color: var(--color-white); padding: 0.75rem 1.5rem; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s; }
-    .btn:hover { background: #d12234; }
-
-    /* Sections */
-    section { padding: 4rem 0; }
-    section h2 { font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem; color: var(--color-primary); text-align: center; }
-    section p { max-width: 800px; margin: 0.5rem auto 2rem; text-align: center; }
-
-    /* About */
-    #sobre .content { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-    #sobre .info { text-align: left; }
-
-    /* Grid Cards */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-    .card { background: var(--color-white); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
-    .card:hover { transform: translateY(-5px); }
-    .card h3 { font-family: var(--font-heading); margin-bottom: 0.75rem; }
-
-    /* Contact Form */
-    #contacto form { max-width: 600px; margin: 0 auto; display: grid; gap: 1rem; }
-    #contacto label { display: block; font-weight: 600; }
-    #contacto input, #contacto textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--color-secondary); border-radius: 4px; font-family: var(--font-body); }
-    #contacto .status { text-align: center; margin-top: 1rem; }
-
-    /* Footer */
-    footer { background: var(--color-primary); color: var(--color-white); padding: 2rem 0; text-align: center; }
-    footer a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
-
-    /* Responsive */
-    @media (min-width: 768px) {
-      .hamburger { display: none; }
-      .nav-links { display: flex; }
+    #hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55); /* superposición oscura */
     }
-    @media (max-width: 767px) {
-      .nav-active { display: block; position: absolute; top: 60px; left: 0; width: 100%; background: var(--color-primary); padding: 1rem 0; }
-      .nav-active li { margin: 1rem 0; text-align: center; }
+    #hero .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    /* Botón flotante WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      font-size: 1.6rem;
     }
   </style>
 </head>
-<body>
-  <header>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="70">
+  <!-- ================= HEADER / NAVBAR ================ -->
+  <nav
+    id="mainNav"
+    class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+  >
     <div class="container">
-      <nav>
-        <div class="logo">LO CONCILIUM</div>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#home">Inicio</a></li>
-          <li><a href="#sobre">Sobre Nosotros</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#valores">Valores</a></li>
-          <li><a href="#digital">Estrategia Digital</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+      <a class="navbar-brand fw-bold" href="#hero">LO CONCILIUM</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-uppercase" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#beneficios">¿Por qué conciliar?</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proceso">Proceso</a></li>
+          <li class="nav-item"><a class="nav-link" href="#equipo">Equipo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
         </ul>
-        <div class="hamburger" id="hamburger">
-          <span></span><span></span><span></span>
-        </div>
-      </nav>
+        <a
+          href="#contacto"
+          class="btn btn-outline-success ms-lg-3"
+          >Agenda tu conciliación</a
+        >
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= HERO =========================== -->
+  <header id="hero" class="d-flex align-items-center">
+    <div class="container hero-content text-center">
+      <h1 class="display-4 fw-bold">
+        Resuelve tu conflicto sin litigar
+      </h1>
+      <p class="lead mb-4">
+        Acuerdos voluntarios, rápidos y sostenibles en Santa Cruz.
+      </p>
+      <a href="#contacto" class="btn btn-success btn-lg me-2"
+        >Reserva tu cita</a
+      >
+      <a
+        href="https://wa.me/59170000000"
+        target="_blank"
+        class="btn btn-outline-light btn-lg"
+        >WhatsApp</a
+      >
     </div>
   </header>
 
-  <main>
-    <section id="home">
-      <h1>TU DERECHO A RESOLVER SIN LITIGAR</h1>
-      <p>Especialistas en conciliación civil, penal, familiar, laboral y comercial.</p>
-      <a href="#contacto" class="btn">Agendar Consulta</a>
-    </section>
-
-    <section id="sobre">
-      <div class="container content">
-        <h2>Sobre Nosotros</h2>
-        <div class="info">
-          <p>Fundada por los abogados <strong>Joelma Lima</strong> y <strong>Joaquín Osorio</strong>, LO CONCILIUM nace con la misión de transformar la forma de resolver conflictos legales, promoviendo la conciliación como primera vía de acceso a la justicia.</p>
-          <p><strong>Ubicación:</strong> 4.º anillo, Torres DUO, Piso 14 – Oficina 4C, Santa Cruz de la Sierra.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="servicios">
-      <div class="container">
-        <h2>Áreas de Práctica</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>Conciliación Civil</h3>
-            <p>Resolución de disputas contractuales, arrendamientos, daños y perjuicios.</p>
-          </div>
-          <div class="card">
-            <h3>Conciliación Penal</h3>
-            <p>Procesos alternativos para delitos de menor cuantía.</p>
-          </div>
-          <div class="card">
-            <h3>Conciliación Familiar</h3>
-            <p>Divorcios, pensiones alimenticias y regímenes de visita.</p>
-          </div>
-          <div class="card">
-            <h3>Conciliación Laboral</h3>
-            <p>Conflicos entre empleados y empleadores, indemnizaciones.</p>
-          </div>
-          <div class="card">
-            <h3>Conciliación Comercial</h3>
-            <p>Disputas entre empresas, socios y proveedores.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="valores">
-      <div class="container">
-        <h2>Valores</h2>
-        <div class="grid">
-          <div class="card"><h3>Profesionalismo</h3><p>Compromiso y ética en cada proceso.</p></div>
-          <div class="card"><h3>Imparcialidad</h3><p>Objetividad y transparencia.</p></div>
-          <div class="card"><h3>Diálogo Constructivo</h3><p>Fomentamos el entendimiento mutuo.</p></div>
-          <div class="card"><h3>Soluciones Humanas</h3><p>Enfoque cercano y respetuoso.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="digital">
-      <div class="container">
-        <h2>Estrategia Digital</h2>
-        <p>Posicionamos la conciliación como primera opción mediante campañas en <strong>Facebook Ads</strong> y presencia profesional en <strong>LinkedIn</strong>, dirigiendo tráfico a este sitio como centro de contacto.</p>
-      </div>
-    </section>
-
-    <section id="contacto">
-      <div class="container">
-        <h2>Contacto</h2>
-        <form action="https://formspree.io/f/yourFormID" method="POST" id="contactForm">
-          <label for="name">Nombre Completo</label>
-          <input type="text" id="name" name="name" required>
-
-          <label for="email">Correo Electrónico</label>
-          <input type="email" id="email" name="email" required>
-
-          <label for="message">Mensaje</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-
-          <button type="submit" class="btn">Enviar Mensaje</button>
-          <p class="status" id="formStatus"></p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer>
+  <!-- ================= BENEFICIOS ===================== -->
+  <section id="beneficios" class="py-5">
     <div class="container">
-      <p>&copy; 2025 LO CONCILIUM. Todos los derechos reservados.</p>
-      <p>Síguenos en <a href="#" target="_blank" rel="noopener">Facebook</a> | <a href="#" target="_blank" rel="noopener">LinkedIn</a></p>
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">¿Por qué elegir la conciliación?</h2>
+        <p class="text-muted">
+          La alternativa eficiente frente al juicio tradicional.
+        </p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="card h-100 text-center border-0 shadow">
+            <div class="card-body">
+              <i class="bi bi-stopwatch fs-1 text-success mb-3"></i>
+              <h5 class="card-title">Rapidez</h5>
+              <p class="card-text">
+                Soluciona en días lo que en tribunales tarda años.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100 text-center border-0 shadow">
+            <div class="card-body">
+              <i class="bi bi-cash-coin fs-1 text-success mb-3"></i>
+              <h5 class="card-title">Ahorro</h5>
+              <p class="card-text">
+                Reducidos costos de honorarios y tasas judiciales.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100 text-center border-0 shadow">
+            <div class="card-body">
+              <i class="bi bi-shield-lock fs-1 text-success mb-3"></i>
+              <h5 class="card-title">Confidencialidad</h5>
+              <p class="card-text">Los acuerdos se mantienen privados.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100 text-center border-0 shadow">
+            <div class="card-body">
+              <i class="bi bi-hand-thumbs-up fs-1 text-success mb-3"></i>
+              <h5 class="card-title">Relaciones preservadas</h5>
+              <p class="card-text">
+                Un enfoque gana-gana que evita fracturas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICIOS ====================== -->
+  <section id="servicios" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Áreas de Servicio</h2>
+        <p class="text-muted">
+          Conciliamos conflictos en múltiples ramas del derecho.
+        </p>
+      </div>
+      <div class="row g-4">
+        <!-- Tarjeta servicio -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Civil</h5>
+              <p class="card-text">
+                Cobros, contratos, daños y perjuicios.
+              </p>
+              <a href="#contacto" class="btn btn-success">Agenda tu caso</a>
+            </div>
+          </div>
+        </div>
+        <!-- Repetir para cada servicio -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Familiar</h5>
+              <p class="card-text">
+                Pensiones, régimen de visitas, bienes gananciales.
+              </p>
+              <a href="#contacto" class="btn btn-success">Agenda tu caso</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Laboral</h5>
+              <p class="card-text">
+                Despidos, beneficios sociales, indemnizaciones.
+              </p>
+              <a href="#contacto" class="btn btn-success">Agenda tu caso</a>
+            </div>
+          </div>
+        </div>
+        <!-- Segunda fila -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Comercial</h5>
+              <p class="card-text">
+                Incumplimientos de contrato, conflictos societarios.
+              </p>
+              <a href="#contacto" class="btn btn-success">Agenda tu caso</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Penal conciliable</h5>
+              <p class="card-text">Lesiones leves, amenazas, daño culposo.</p>
+              <a href="#contacto" class="btn btn-success">Agenda tu caso</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Otros</h5>
+              <p class="card-text">
+                Propiedad horizontal, vecinal, consumo, etc.
+              </p>
+              <a href="#contacto" class="btn btn-success">Agenda tu caso</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESO ======================= -->
+  <section id="proceso" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Nuestro Proceso</h2>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-2 text-center">
+          <div class="p-3 border rounded-circle mx-auto mb-2">
+            <span class="fw-bold fs-4">1</span>
+          </div>
+          <p class="fw-semibold mb-0">Consulta gratuita</p>
+        </div>
+        <div class="col-md-2 text-center">
+          <div class="p-3 border rounded-circle mx-auto mb-2">
+            <span class="fw-bold fs-4">2</span>
+          </div>
+          <p class="fw-semibold mb-0">Preparación de caso</p>
+        </div>
+        <div class="col-md-2 text-center">
+          <div class="p-3 border rounded-circle mx-auto mb-2">
+            <span class="fw-bold fs-4">3</span>
+          </div>
+          <p class="fw-semibold mb-0">Audiencia</p>
+        </div>
+        <div class="col-md-2 text-center">
+          <div class="p-3 border rounded-circle mx-auto mb-2">
+            <span class="fw-bold fs-4">4</span>
+          </div>
+          <p class="fw-semibold mb-0">Acuerdo</p>
+        </div>
+        <div class="col-md-2 text-center">
+          <div class="p-3 border rounded-circle mx-auto mb-2">
+            <span class="fw-bold fs-4">5</span>
+          </div>
+          <p class="fw-semibold mb-0">Seguimiento</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EQUIPO ======================== -->
+  <section id="equipo" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Nuestro Equipo</h2>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card border-0 shadow-sm text-center">
+            <img
+              src="https://via.placeholder.com/300?text=Joelma+Lima"
+              class="card-img-top"
+              alt="Dra. Joelma Lima"
+            />
+            <div class="card-body">
+              <h5 class="card-title mb-0">Dra. Joelma Lima</h5>
+              <small class="text-muted">Conciliadora Civil & Familiar</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card border-0 shadow-sm text-center">
+            <img
+              src="https://via.placeholder.com/300?text=Joaquin+Osorio"
+              class="card-img-top"
+              alt="Dr. Joaquín Osorio"
+            />
+            <div class="card-body">
+              <h5 class="card-title mb-0">Dr. Joaquín Osorio</h5>
+              <small class="text-muted">Conciliador Penal & Comercial</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIOS =================== -->
+  <section id="testimonios" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Testimonios</h2>
+      </div>
+      <div
+        id="carouselTestimonials"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <blockquote class="blockquote text-center">
+              <p class="mb-4">
+                “En una sola audiencia resolvimos un conflicto que llevaba
+                años. 100 % recomendados.”
+              </p>
+              <footer class="blockquote-footer">María R.</footer>
+            </blockquote>
+          </div>
+          <div class="carousel-item">
+            <blockquote class="blockquote text-center">
+              <p class="mb-4">
+                “Profesionalismo y empatía. Sentí que mi voz importaba.”
+              </p>
+              <footer class="blockquote-footer">Carlos T.</footer>
+            </blockquote>
+          </div>
+          <div class="carousel-item">
+            <blockquote class="blockquote text-center">
+              <p class="mb-4">
+                “Evité un juicio costoso y llegamos a un acuerdo justo para
+                ambos.”
+              </p>
+              <footer class="blockquote-footer">Ana G.</footer>
+            </blockquote>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselTestimonials"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselTestimonials"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ========================== -->
+  <section id="faq" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Preguntas Frecuentes</h2>
+      </div>
+      <div class="accordion accordion-flush" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq1">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faq1-content"
+            >
+              ¿Cuánto dura una conciliación?
+            </button>
+          </h2>
+          <div
+            id="faq1-content"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faqAccordion"
+          >
+            <div class="accordion-body">
+              En la mayoría de los casos, el acuerdo se logra en un plazo de 7
+              a 15 días corridos.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq2">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faq2-content"
+            >
+              ¿El acuerdo tiene validez legal?
+            </button>
+          </h2>
+          <div
+            id="faq2-content"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faqAccordion"
+          >
+            <div class="accordion-body">
+              Sí. Al homologarse, el acta de conciliación adquiere fuerza de
+              cosa juzgada y título ejecutivo.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq3">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faq3-content"
+            >
+              ¿Puedo conciliar si ya inicié demanda?
+            </button>
+          </h2>
+          <div
+            id="faq3-content"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faqAccordion"
+          >
+            <div class="accordion-body">
+              Sí. Puedes solicitar suspensión del proceso judicial mientras
+              se lleva adelante la conciliación.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq4">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faq4-content"
+            >
+              ¿Cuáles son los costos?
+            </button>
+          </h2>
+          <div
+            id="faq4-content"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faqAccordion"
+          >
+            <div class="accordion-body">
+              Se cobra un arancel único por audiencia y la redacción del
+              acuerdo. Consulta para obtener un presupuesto personalizado.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA PRINCIPAL ================ -->
+  <section class="py-5 text-white" style="background-color: #198754;">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-3">¿Listo para resolver tu conflicto?</h2>
+      <a href="#contacto" class="btn btn-light btn-lg"
+        >Reserva tu cita hoy</a
+      >
+    </div>
+  </section>
+
+  <!-- ================= CONTACTO ===================== -->
+  <section id="contacto" class="py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <h2 class="fw-bold mb-4">Contáctanos</h2>
+          <form>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre completo</label>
+              <input type="text" class="form-control" id="nombre" required />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="email" required />
+            </div>
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Teléfono / WhatsApp</label>
+              <input type="tel" class="form-control" id="telefono" />
+            </div>
+            <div class="mb-3">
+              <label for="area" class="form-label">Área del conflicto</label>
+              <select id="area" class="form-select">
+                <option>Civil</option>
+                <option>Familiar</option>
+                <option>Laboral</option>
+                <option>Comercial</option>
+                <option>Penal conciliable</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="mensaje" class="form-label">Mensaje</label>
+              <textarea
+                id="mensaje"
+                class="form-control"
+                rows="4"
+                placeholder="Describe brevemente tu caso"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-success w-100">
+              Enviar consulta
+            </button>
+          </form>
+        </div>
+
+        <div class="col-lg-6">
+          <h2 class="fw-bold mb-4">Datos de contacto</h2>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-geo-alt-fill me-2"></i
+              >Torres DUO, 4.º anillo, piso 14, oficina 4C – Santa Cruz
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-telephone-fill me-2"></i>+591 700 000 00
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-envelope-fill me-2"></i>contacto@loconcilium.bo
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-clock-fill me-2"></i>Lunes – Viernes 9:00-18:00
+            </li>
+          </ul>
+          <!-- Google Maps embed -->
+          <div class="ratio ratio-16x9 rounded shadow">
+            <iframe
+              src="https://www.google.com/maps?q=-17.782,-63.182&hl=es;z=15&output=embed"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ======================= -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container d-md-flex justify-content-between align-items-center">
+      <p class="mb-2 mb-md-0">
+        © 2025 LO CONCILIUM – Todos los derechos reservados
+      </p>
+      <div class="mb-2 mb-md-0">
+        <a href="#" class="text-white me-3">Aviso legal</a>
+        <a href="#" class="text-white">Política de privacidad</a>
+      </div>
+      <div>
+        <a
+          href="https://facebook.com"
+          target="_blank"
+          class="text-white me-2"
+        >
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          class="text-white me-2"
+        >
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://wa.me/59170000000" target="_blank" class="text-white">
+          <i class="bi bi-whatsapp"></i>
+        </a>
+      </div>
     </div>
   </footer>
 
-  <script defer>
-    // Navegación móvil
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => navLinks.classList.toggle('nav-active'));
+  <!-- Botón flotante WhatsApp -->
+  <a
+    <!--href="https://wa.me/59170000000"-->
+    target="_blank"
+    class="btn btn-success rounded-circle whatsapp-float"
+    aria-label="WhatsApp"
+  >
+    <i class="bi bi-whatsapp"></i>
+  </a>
 
-    // Feedback de formulario
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('formStatus');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      status.textContent = 'Enviando mensaje...';
-      fetch(form.action, { method: 'POST', body: new FormData(form) })
-        .then(response => {
-          if (response.ok) {
-            status.textContent = 'Mensaje enviado correctamente.';
-            form.reset();
-          } else throw new Error('Error de envío');
-        })
-        .catch(() => status.textContent = 'Hubo un problema, inténtalo más tarde.');
-    });
-  </script>
+  <!-- Bootstrap Bundle (JS + Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
